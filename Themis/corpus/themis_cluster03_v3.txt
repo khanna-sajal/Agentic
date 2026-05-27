@@ -1,0 +1,10 @@
+author: Legal Team
+date: 2024-03-18
+version: v3
+source_type: internal_policy
+regulatory_domain: GDPR
+policy_title: Incident Reporting Amendment
+policy_body: |
+  UPDATED (2024 GDPR guidance): Notification may be submitted within 7 days in limited, documented cases if the incident qualifies under the amended exception criteria. Under this amendment, certain breaches that are initially assessed as lower risk and that involve adequately protected personal data may be communicated to the supervisory authority on an extended schedule, provided that the extended timeline is formally approved by the data protection officer and documented in the incident report.
+
+  The amendment requires the incident response team to maintain a detailed justification for each case where the notification timeline extends beyond 72 hours. Justifications must explain why the breach was considered low risk, how the affected data was protected, and why an additional investigation period was necessary before notification. This change is intended to allow flexibility for complex incidents that require deeper analysis, while still preserving the organization's overall obligation to escalate significant data protection issues. The amendment also introduces quarterly reviews of extended-timeline decisions to ensure the exception is not applied too broadly and that the company remains aligned with regulatory expectations.
