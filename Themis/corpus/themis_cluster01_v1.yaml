@@ -1,0 +1,10 @@
+author: Legal Team
+date: 2021-03-15
+version: v1
+source_type: internal_policy
+regulatory_domain: GDPR
+policy_title: Data Retention Policy
+policy_body: |
+  The organization establishes a data retention policy that prioritizes privacy, clarity, and lawful processing. All client data created or received during project engagements must be retained for a minimum of three years after project close, which enables operational continuity, audit readiness, and fulfilment of contractual obligations. During this retention period, the data shall remain accessible to authorized business units and shall be protected through encryption-at-rest, access controls, and regular reviews. Data older than five years must be purged from operational systems, unless an explicit legal hold or contractual requirement prevents deletion.
+
+  Retention decisions shall be documented in the project retention schedule and reviewed by the privacy office at least annually. The policy requires a two-stage review: first, to confirm that any data scheduled for deletion no longer serves business, contractual, or legal purposes; second, to ensure that the deletion process includes a secure wipe of storage media, verification of erasure, and updated inventory records. When data is purged, the privacy team shall retain a deletion certificate and a log of who authorized and executed the purge. This approach balances the need for temporary access and historical recordkeeping with the obligation to limit the storage of personal data, consistent with our internal standards and regulatory expectations.

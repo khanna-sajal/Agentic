@@ -1,0 +1,10 @@
+author: Legal Team
+date: 2022-09-10
+version: v2
+source_type: internal_policy
+regulatory_domain: GDPR
+policy_title: Breach Notification Protocol
+policy_body: |
+  The breach notification protocol refines incident handling by introducing risk-based prioritization and reporting tiers. High-risk personal data breaches must be reported to the supervisory authority within 48 hours, whereas lower-risk breaches may follow standard documentation procedures and be escalated through internal compliance channels. The protocol still mandates that all breaches are logged, reviewed, and resolved in a timely manner.
+
+  For high-risk breaches, the report must include an assessment of harm to data subjects, a summary of containment steps, and a remediation plan. For lower-risk incidents, the protocol requires detailed internal documentation so that management can determine whether external notification is necessary. This version emphasizes that the organization should maintain a consistent incident classification framework and that the breach review board must convene promptly to validate the initial risk assessment and notification decision. The protocol seeks to balance agility in response with heightened attention to breaches that pose significant risk to individuals or to the organization’s compliance posture.

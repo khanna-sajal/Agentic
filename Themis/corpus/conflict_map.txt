@@ -1,0 +1,19 @@
+cluster01 | themis_cluster01_v1.yaml | themis_cluster01_v3.yaml
+v1: "Client data must be retained for a minimum of three years after project close."
+v3: "Records may no longer be purged before the seven-year term is met."
+
+cluster02 | themis_cluster02_v1.yaml | themis_cluster02_v3.yaml
+v1: "All derivative works based on open source components must include attribution to the original author in product documentation."
+v3: "Internal derivatives used solely within the company do not require attribution to the original author."
+
+cluster03 | themis_cluster03_v1.yaml | themis_cluster03_v3.yaml
+v1: "The supervisory authority must be notified within 72 hours of discovering a personal data breach."
+v3: "Notification may be submitted within 7 days in limited, documented cases."
+
+cluster04 | themis_cluster04_v1.yaml | themis_cluster04_v3.yaml
+v1: "Personal devices used for work must employ company-managed antivirus and require a screen lock."
+v3: "Devices on private corporate networks may use user-managed antivirus instead of company-managed solutions."
+
+cluster05 | themis_cluster05_v1.yaml | themis_cluster05_v3.yaml
+v1: "Multifactor authentication is required for all remote access to corporate systems."
+v3: "Remote access from whitelisted IP addresses may use password-only authentication."
