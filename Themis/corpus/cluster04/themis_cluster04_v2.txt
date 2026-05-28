@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2022-12-20 | version: v2
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+The BYOD policy update strengthens protection requirements by mandating encryption in addition to existing security measures. Personal devices used for work must employ company-managed antivirus, screen lock, and encrypted storage. Encryption ensures data protection when devices are in transit or unattended, limiting exposure in the event of loss or theft. The update specifies that encryption must be full-disk or file-level, with cryptographic keys managed in accordance with corporate key management standards.
+
+This version also formalizes the requirement that devices be enrolled in the corporate mobile device management platform and that security policies are enforced centrally. In addition to regular antivirus scans and screen lock enforcement, the device must undergo an automated compliance check before it is permitted to access sensitive systems. The policy includes guidance for employees on how to report lost or stolen devices immediately and outlines the remediation steps for compromised endpoints, including remote wipe, credential resets, and follow-up security reviews.
+
+The update introduces a process for classifying devices by risk level, with higher-risk devices subject to more frequent posture assessments and stricter encryption controls. It also requires periodic security awareness communications to remind employees of their responsibilities when using personal devices for work.
+
+This version preserves the core protective measures of antivirus and device locking while adding a robust encryption requirement for both data at rest and data in transit. It clarifies how BYOD devices must be managed to protect corporate information and maintain compliance with privacy standards.
+
+By raising the security baseline and strengthening oversight, the policy reduces the risk of sensitive data exposure from personal devices.

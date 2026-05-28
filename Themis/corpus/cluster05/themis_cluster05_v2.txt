@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2023-02-25 | version: v2
+source_type: internal_policy
+regulatory_domain: ISO 27001
+---
+
+The remote access policy evolves to incorporate risk-based authentication requirements. Multifactor authentication is required for all high-risk remote access scenarios, including connections to sensitive systems, privileged accounts, and remote administrative interfaces. Standard remote access may use password-based authentication when risk assessments permit, but only if the access path is restricted by additional controls such as device trust, geofencing, or a segregated remote work network.
+
+This update calls for a documented risk assessment for every access use case, and for the security team to maintain a catalog of access categories and their required authentication levels. The policy also requires continuous monitoring of remote access sessions to detect suspicious behavior, and it mandates that any remote access method using password-only authentication be reviewed quarterly.
+
+The policy specifies that higher-risk remote access must still be protected by multifactor authentication, while lower-risk access can proceed with compensating controls when justified. It requires that approved password-only paths be revalidated if the access context changes, such as a change in user role, endpoint posture, or network location.
+
+The policy also includes a requirement to document the controls used for password-only access, including device trust mechanisms, network segmentation, and endpoint management. This documentation must be available for audit review and must demonstrate that the risk level remains acceptable.
+
+Overall, this version introduces a more nuanced approach, allowing some less-critical connections to proceed with password access when supported by compensating controls, while preserving strong verification for sensitive access.

@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2022-04-10 | version: v2
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+The updated retention policy refines the original program by extending the baseline retention window and clarifying purge requirements. Client data must now be retained for a minimum of five years after project close, instead of three, to accommodate longer warranty periods, ongoing support obligations, and evolving regulatory expectations. After five years, data shall be evaluated for deletion and, where no legal or business justification exists, it shall be purged from active systems.
+
+Under this update, retention schedules must explicitly document the justification for the five-year hold and the rationale for any subsequent extension through year seven. Data owners are required to review records before the five-year mark to determine whether they should remain for litigation, audit, or contractual reasons. Data classified as regulated or subject to continuing customer obligations is held longer, but the update ensures a clear, documented process for determining such exceptions.
+
+The policy also introduces tighter controls for system classification labels and automated retention flags. Source systems supporting client data must use classification metadata so that the privacy team can track retention obligations and prevent accidental early deletion. The update requires that any data kept beyond seven years receive written approval from the privacy office and the legal team.
+
+In addition, the update enhances training for line-of-business leaders and records managers so they understand the new retention thresholds. The policy requires annual retention certification for all business units that handle client data in order to ensure that retention schedules are maintained accurately and that no records are kept indefinitely without justification.
+
+This version supports stronger data hygiene while providing a more robust foundation for compliance and historical traceability. By making retention decisions more transparent and better documented, the organization can reduce risk while preserving necessary records for legitimate use.

@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2021-08-01 | version: v1
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+The organization’s breach notification policy requires that the supervisory authority must be notified within 72 hours of discovering a personal data breach. When a breach is identified, the incident response team must immediately evaluate the scope, affected systems, categories of personal data involved, and the likely impact on data subjects. Once the breach has been confirmed, the notification process begins without delay, and the supervisory authority must receive a full report within the 72-hour window.
+
+The policy further mandates that all incidents must be documented and reported immediately, including the timeline of discovery, containment actions, root cause analysis, and mitigation measures. Notifications must include a description of the nature of the personal data breach, the categories and approximate number of data subjects affected, and the measures taken or proposed to address the breach. The incident response team must also provide contact details for a data protection officer or responsible representative.
+
+This document specifies that notifications are required even if the personal data breach involves encrypted or pseudonymized data, if the data can still be linked to individuals through additional information. It also requires that the breach response team preserve evidence and maintain an audit trail of decisions made during the investigation.
+
+The policy requires the organization to undertake corrective actions following a breach, including updates to policies, additional staff training, and enhancements to technical controls. It also mandates a post-incident review to identify lessons learned and to improve incident response readiness.
+
+By setting clear timelines and documentation standards, this policy is designed to ensure transparency, prompt action, and accountability while enabling the organization to meet strict regulatory deadlines and minimize harm to affected individuals.

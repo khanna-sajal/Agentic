@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2022-01-30 | version: v1
+source_type: internal_policy
+regulatory_domain: ISO 27001
+---
+
+The remote access authentication policy requires multifactor authentication for all remote access to corporate systems. Any employee, contractor, or third-party user connecting from outside the corporate perimeter must authenticate with at least two distinct factors, such as a password plus a hardware token, software authenticator, or biometric verification. Password-only access is prohibited for remote connections, regardless of the end user’s role or the sensitivity of the resources being accessed.
+
+The policy also specifies that remote access sessions should be established through approved VPN or secure gateway solutions, and that session controls must enforce timeouts, device posture validation, and logging. The multifactor requirement extends to remote desktop, cloud management portals, and administrative consoles. Exceptions are not permitted for standard remote access channels because they are inherently more susceptible to credential compromise.
+
+This policy further requires that access logs be retained for at least twelve months and reviewed regularly for unusual authentication patterns. If a user cannot complete multifactor authentication, they must follow the formal access exception process, which may include additional verification steps and temporary access restrictions.
+
+The policy also covers remote access from vendor and partner systems, requiring that third parties adhere to the same multifactor controls before accessing any corporate assets. Any temporary access granted to external parties must be revoked immediately after the purpose has been fulfilled.
+
+By making multifactor authentication mandatory for all remote access, the organization reduces the likelihood of unauthorized access and strengthens its overall access control posture.

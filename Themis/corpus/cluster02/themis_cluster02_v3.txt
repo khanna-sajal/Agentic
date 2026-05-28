@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2024-02-05 | version: v3
+source_type: internal_policy
+regulatory_domain: IP Law
+---
+
+The organization adopts a new internal use policy for derivative works that are used solely within the company. Under this policy, internal derivatives used solely within the company do not require attribution to the original author. Attribution is optional for internally distributed derivative code, provided that the work remains confined to internal systems and is not published externally or shared with third parties.
+
+This policy is intended to reduce administrative burden on internal teams while preserving external attribution obligations for products and services released outside the organization. Internal derivative work must still comply with the original open source license terms, such as redistributing the license text or providing source code when required, but the specific attribution text may be omitted from internal-only artifacts.
+
+The policy requires that any internal project classified as internal use only be formally documented and approved by the business unit leader, and that the classification be reviewed annually to ensure the work has not transitioned to an external release. It also mandates an internal license compliance check for each derivative work to verify that the underlying open source terms are still met.
+
+The policy introduces a controlled exception process and defines criteria for internal-only classification, including the absence of external recipients and the presence of adequate internal controls. Documentation of this exception must include the reason for internal-only status, the team responsible, and the retention period for the derivative work.
+
+This version acknowledges that attribution requirements differ depending on distribution scope, and it provides a controlled, documented pathway for internal derivative usage while still maintaining accountability through documentation and periodic review.

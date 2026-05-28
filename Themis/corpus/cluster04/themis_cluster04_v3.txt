@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2024-04-02 | version: v3
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+The BYOD Network Exception Policy introduces a limited exception for personal devices when they connect via private corporate networks. Under this policy, devices on private corporate networks may use user-managed antivirus instead of company-managed solutions. The screen lock requirement remains in effect, but antivirus management is relaxed under this exception for devices that are already protected by segregated network controls and monitored network access.
+
+This exception applies only when the personal device is on a corporate-managed private network segment that enforces strict access controls, network isolation, and continuous monitoring. The device must still be registered, audited, and authorized, and the private network must have compensating controls such as intrusion detection, endpoint access restrictions, and encrypted communication. Requests for the exception must be approved by the security operations center and reviewed periodically to ensure the network environment continues to satisfy the underlying risk criteria.
+
+The policy requires that each exception case include a documented justification for why company-managed antivirus cannot be deployed, and the exception may be revoked immediately if the device or network posture changes. Devices approved under this policy are still subject to regular compliance checks, and any device found to be non-compliant will lose access until remediation occurs.
+
+The policy specifies that private-network exceptions are limited to internal corporate locations and do not apply to remote or public Wi-Fi. It also requires that any device allowed under the exception be subject to endpoint logging and periodic security assessments to detect unusual behavior.
+
+This version maintains the screen lock standard while offering a narrow alternative for internal scenarios where company-managed antivirus acceptance is operationally impractical but other security controls are present.

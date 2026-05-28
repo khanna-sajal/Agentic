@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2021-03-15 | version: v1
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+The organization establishes a data retention policy that balances operational continuity, legal compliance, and data minimization. All client data created or received during project engagements must be retained for a minimum of three years after project close. During this three-year period, the data shall remain available to authorized business units for legitimate business needs, audits, customer inquiries, and post-project reviews.
+
+Retention decisions are coordinated through the privacy office, and each project must maintain a documented retention schedule. Confidential and sensitive records must be classified, stored with encryption-at-rest, and reviewed quarterly to ensure they remain necessary. Data older than five years must be purged from operational systems unless an explicit legal hold or contractual obligation prevents deletion. When purge actions are executed, the process must include secure wipe procedures, verification of destruction, and an updated deletion log listing the records removed.
+
+The policy includes a defined escalation path for exceptions, requiring approval from the data governance board before data can be retained beyond the five-year cleanup threshold. It also mandates that retention schedules include risk assessments for each document category, considering regulatory requirements, litigation exposure, and long-term business continuity. Records containing special category data receive additional review and may require separate, documented justifications for their retention timeline.
+
+Data owners are responsible for supporting periodic retention reviews and for notifying the privacy office when retention requirements change. The policy also requires that all retention decisions be communicated to stakeholders in a clear, auditable format. By establishing this structured approach, the organization aims to reduce unnecessary storage costs, improve data hygiene, and maintain confidence in its ability to manage retained client data responsibly.
+
+The policy further defines responsibilities for retained archived data. Archived datasets must be indexed, stored separately from active production systems, and monitored for integrity. This ensures that older records can be located quickly during audits or legal inquiries and that their retention does not undermine the organization’s broader privacy commitments.

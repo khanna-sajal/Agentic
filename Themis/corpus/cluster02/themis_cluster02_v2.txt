@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2022-06-15 | version: v2
+source_type: internal_policy
+regulatory_domain: IP Law
+---
+
+This clarification refines the attribution requirement by specifying acceptable formats and distribution contexts. Attribution to the original author is required and may be satisfied by digital notices, printed acknowledgments, or embedded metadata, depending on the medium of distribution. The requirement applies to public distributions, customer-facing deliverables, and any product documentation that accompanies externally released software.
+
+The policy clarifies that attribution can be delivered through a third-party acknowledgment page, a NOTICE file in the distribution package, or a clearly marked section of release documentation, so long as the original author and license are identified. For digital products, attribution should be accessible through the product’s About section, legal information screen, or accompanying README file. For printed media, attribution should appear in user guides, manuals, or packaging inserts.
+
+This version also expands the recordkeeping requirement, specifying that the attribution archive must contain the exact text used, the source license file, and the location where the attribution appears. Development teams must provide evidence of attribution during release reviews, and the compliance team must maintain a repository of approved attribution statements for frequently used open source components.
+
+The policy requires training for product managers and release coordinators so they understand the updated attribution requirements. It also introduces a quarterly audit of external distribution packages to verify compliance with the clarified formatting and placement guidelines.
+
+This update is designed to reduce ambiguity in the original policy while preserving the organization’s commitment to honoring open source authors and protecting the company from license non-compliance.

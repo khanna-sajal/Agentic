@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2024-05-12 | version: v3
+source_type: internal_policy
+regulatory_domain: ISO 27001
+---
+
+The Remote Access Exception Policy defines a narrow exception for whitelisted IP addresses and qualified corporate endpoints. Remote access from whitelisted IP addresses may use password-only authentication when the connection originates from a pre-approved network location and the endpoint has been validated by the security team. This exception applies only to vetted corporate endpoints with network-level protections, and it does not extend to unmanaged or public networks.
+
+To qualify for the exception, the remote access request must be submitted through the formal exception process, which includes network verification, endpoint posture assessment, and approval from both the information security and network operations teams. The approved exceptions must be reviewed every 90 days and revoked immediately if any change in risk posture occurs.
+
+The policy requires that all exception cases receive increased logging and monitoring, with elevated alerts generated for any password-only access from a whitelisted address. It also mandates that the whitelisted IP address and endpoint status be validated continuously, and that access is revoked if the endpoint falls out of compliance.
+
+The policy specifies that whitelisted IP exceptions are restricted to internal corporate network segments and that each exception must have a designated owner responsible for ongoing monitoring. Third-party vendors are not permitted to use this exception unless they are connected through a dedicated, secured partner network and have been explicitly approved by security.
+
+This version preserves the possibility of operational flexibility while ensuring that password-only remote access is contained, justified, and subject to strong oversight.

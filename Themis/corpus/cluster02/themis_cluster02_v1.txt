@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2021-05-20 | version: v1
+source_type: internal_policy
+regulatory_domain: IP Law
+---
+
+The organization requires that all derivative works based on open source components include attribution to the original author in product documentation and distribution materials. Any software module, library, or creative work that is adapted, modified, or incorporated from open source sources must retain the original copyright notice and identify the source project, contributor, and licensing terms. Attribution is required for both internal and external distribution, and it must be visible in both technical documentation and consumer-facing materials where applicable.
+
+To comply with this policy, developers and content creators must maintain a comprehensive attribution record for every open source component used in a derivative work. The record should capture the original project name, version, license type, contributor acknowledgements, and the specific modifications made. When derivative works are shared internally, attribution may appear in internal release notes, design documents, or source code headers. When distributed externally, attribution should also be included in user manuals, product websites, and end-user licensing materials.
+
+The policy also requires periodic review of release artifacts to verify that required attribution text appears where necessary. This includes both source code distributions and compiled products that incorporate open source libraries. Failure to provide attribution may result in non-compliance with open source license obligations, intellectual property liability, and damage to the company’s reputation.
+
+The policy is enforced through a combination of automated license scanning, manual release reviews, and training for development teams. It is intended to make open source attribution an integral part of the product lifecycle, rather than an afterthought.
+
+By maintaining these requirements, the organization demonstrates respect for open source authors and reduces legal risk across its software supply chain.

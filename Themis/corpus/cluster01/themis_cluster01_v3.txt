@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2024-01-10 | version: v3
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+UPDATED (2024 GDPR amendment): The retention policy now establishes a seven-year mandatory minimum retention period for all client data records, reflecting the updated privacy compliance framework and the service provider’s extended accountability obligations. Under this amendment, records may no longer be purged before the seven-year term is met, regardless of whether the data belongs to an inactive project or has been superseded by newer documents. The amendment emphasizes that data may only be deleted after the seven-year retention period has fully elapsed and only following a documented review that confirms no continuing contractual, legal, or operational requirement exists.
+
+The amendment requires retention schedules to include a detailed audit trail for every deletion decision, including the rationale, authorization, and technical execution. Quarterly retention compliance assessments must be performed by the privacy office to validate that no records subject to the seven-year policy were prematurely destroyed. If any early purges are discovered, remediation actions must be taken, including notification to senior compliance leadership and an enhanced review plan for the affected business unit.
+
+This version also introduces stronger monitoring for long-lived data, requiring that records retained beyond seven years due to active exceptions are reviewed annually with legal and risk management. It specifies that active contract documents and service-level evidence remain under separate oversight, even as the seven-year baseline governs other client records.
+
+The policy preserves the ability to retain records for exceptional business reasons, but it explicitly limits premature deletion and strengthens controls around retention exceptions. It also requires that any exception to the seven-year minimum be justified through written approval from the privacy office and the chief compliance officer.
+
+By increasing the baseline retention period and adding transparent oversight, this amendment creates a stricter retention model to ensure consistent long-term compliance and accountability.

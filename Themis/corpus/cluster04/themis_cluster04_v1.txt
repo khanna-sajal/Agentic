@@ -1,0 +1,16 @@
+---
+author: Legal Team
+date: 2021-11-12 | version: v1
+source_type: internal_policy
+regulatory_domain: GDPR
+---
+
+The Bring Your Own Device (BYOD) security policy requires that personal devices used for work must employ company-managed antivirus and require a screen lock to protect corporate resources and personal data. Employees who connect personal laptops, tablets, or smartphones to corporate systems must install the company-approved antivirus solution, which is configured to update automatically and perform scheduled scans. The screen lock should activate after no more than five minutes of inactivity, and devices must be configured to require strong authentication before unlocking.
+
+Devices must be registered and approved before accessing corporate resources. The registration process includes validation of device security posture, confirmation of endpoint encryption, and verification that the device meets current patch and configuration standards. The policy also specifies that personal devices may not store sensitive corporate data unless the device is enrolled in the mobile device management platform and full-disk encryption is enabled.
+
+This policy further requires that the endpoint management team monitor BYOD devices for compliance and remediate any security issues promptly. If a personal device is found to be non-compliant, access to corporate systems will be suspended until the issue is resolved. The policy is designed to reduce the likelihood of malware introduction, unauthorized access, and data exposure through personally owned endpoints.
+
+The organization expects employees to report lost or stolen devices immediately, and it reserves the right to perform remote wipe actions when a device is compromised or no longer authorized for use. The policy also requires that any exception requests be escalated to the security operations center for approval.
+
+By imposing company-managed antivirus and screen lock requirements, this policy ensures that personal devices meet a consistent security baseline before they are allowed to connect to sensitive networks and applications.
