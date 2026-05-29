@@ -1,0 +1,9 @@
+---
+author: Bob
+date: 2026-02-01
+version: 2
+source_type: medical_record
+regulatory_domain: [HIPAA]
+---
+This is the second version of the document.
+It updates the encryption requirement and clarifies patient consent rules.

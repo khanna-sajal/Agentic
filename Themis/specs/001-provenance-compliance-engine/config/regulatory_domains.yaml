@@ -1,0 +1,53 @@
+regulatory_domains:
+  HIPAA:
+    name: "Health Insurance Portability and Accountability Act"
+    effective_date: "1996-08-21"
+    last_updated: "2013-01-25"
+    required_for_source_types:
+      - medical_record
+      - patient_data
+    rules:
+      - id: "HIPAA-001"
+        description: "Patient data must be encrypted in transit"
+        severity: "HIGH"
+        field: encryption
+        expected: required
+      - id: "HIPAA-002"
+        description: "Authorization required before sharing patient data"
+        severity: "MEDIUM"
+        field: authorization_required
+        expected: true
+  GDPR:
+    name: "General Data Protection Regulation"
+    effective_date: "2018-05-25"
+    last_updated: "2021-12-01"
+    required_for_source_types:
+      - personal_data
+    rules:
+      - id: "GDPR-001"
+        description: "Personal data processing must have a legal basis"
+        severity: "HIGH"
+        field: legal_basis
+        expected: required
+      - id: "GDPR-002"
+        description: "Data subjects must be informed of processing activities"
+        severity: "MEDIUM"
+        field: notice_provided
+        expected: true
+  SOX:
+    name: "Sarbanes-Oxley Act"
+    effective_date: "2002-07-30"
+    last_updated: "2020-01-01"
+    required_for_source_types:
+      - financial_report
+    rules:
+      - id: "SOX-001"
+        description: "Financial records must be retained for 7 years"
+        severity: "MEDIUM"
+        field: retention_period_years
+        expected: 7
+      - id: "SOX-002"
+        description: "Internal controls must be documented"
+        severity: "LOW"
+        field: controls_documented
+        expected: true

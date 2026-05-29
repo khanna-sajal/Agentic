@@ -1,0 +1,9 @@
+---
+author: Alice
+date: 2026-01-01
+version: 1
+source_type: medical_record
+regulatory_domain: [HIPAA]
+---
+This is the first version of the document.
+It describes patient record handling and encryption requirements.
