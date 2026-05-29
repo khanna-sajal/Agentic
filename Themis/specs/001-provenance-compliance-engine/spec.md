@@ -8,6 +8,26 @@
 
 **Input**: User description: "Build a provenance extraction and compliance validation feature for the RAG system with document intake, YAML metadata parsing, provenance tracking, conflict detection, and compliance risk analysis."
 
+## Clarifications
+
+### Session 2026-05-29
+
+- Q: What algorithm should conflict detection use to identify contradictory claims? → A: Exact string matching + semantic fallback (strict first, then semantic if no exact match found)
+- Q: How should regulatory domain taxonomy be defined and maintained? → A: Predefined domain list with effective dates in YAML/JSON config file
+- Q: How should audit logs implement tamper detection? → A: Cryptographic hash chains (SHA-256 hashes linking sequential entries)
+- Q: Should semantic conflict detection include reconciliation recommendations? → A: Identification only; humans decide reconciliation
+- Q: When should document ingestion/metadata extraction occur? → A: Batch + on-demand hybrid (periodic scanning plus explicit API trigger for urgent documents)
+
+## Integration Notes
+
+**Conflict Detection Strategy**: The system will implement a two-phase approach: (1) first attempt exact string matching on extracted claims to identify unambiguous conflicts, (2) if no exact matches found for semantically related claims, apply NLP-based semantic similarity. This balances precision (avoiding false positives from formatting variations) with comprehensiveness (catching truly contradictory interpretations of the same rule or entity). **Scope limitation**: semantic matching is used strictly for **identifying potential conflicts**; all reconciliation decisions are deferred to human compliance officers for manual review and validation. Automated reconciliation is explicitly out of scope to avoid introducing errors into regulatory compliance decisions.
+
+**Regulatory Domain Taxonomy**: A configuration file (`regulatory_domains.yaml` or `regulatory_domains.json`) will define all supported regulatory domains with metadata including: domain name (e.g., HIPAA, GDPR, SOX, FDA, PCI-DSS), short description, effective date, last update date, and required coverage for specific source_type documents. This approach allows non-developers to update domain definitions and add new domains without code changes.
+
+**Audit Log Tamper Detection**: Audit logs will implement SHA-256 hash chains where each log entry includes: (1) the entry sequence number, (2) timestamp, query, sources, and inference data, (3) SHA-256 hash of the previous entry (or null for first entry), creating an immutable chain. Verification involves recomputing hashes sequentially—if any entry's hash doesn't match, tampering is detected. This provides cryptographic proof of log integrity without requiring external PKI infrastructure.
+
+**Document Ingestion Strategy**: A hybrid approach combines periodic batch processing with on-demand API triggering. The system will: (1) execute scheduled batch scans of the `/corpus` directory (configurable interval, e.g., daily) to comprehensively ingest and extract metadata, and (2) expose a REST API endpoint that allows operators to trigger immediate ingestion of specific documents or all unprocessed documents. This ensures compliance readiness through regular automated processing while allowing urgent document updates to be reflected immediately without waiting for the next scheduled batch.
+
 ## User Scenarios & Testing
 
 ### User Story 1 - Ingest and Extract Document Metadata (Priority: P1)
@@ -102,24 +122,24 @@ Auditors and regulatory compliance teams need comprehensive, tamper-evident logs
 
 ### Functional Requirements
 
-- **FR-001**: System MUST scan all `.txt` files in the `/corpus` directory and its subdirectories during document intake
+- **FR-001**: System MUST scan all `.txt` files in the `/corpus` directory and its subdirectories during document intake via two mechanisms: (1) scheduled periodic batch processing (configurable interval), and (2) on-demand via REST API trigger allowing immediate ingestion of specific or all unprocessed documents
 - **FR-002**: System MUST detect and parse YAML front-matter blocks at the beginning of each document
 - **FR-003**: System MUST extract and validate the following YAML metadata fields: author, date, version, source_type, regulatory_domain
 - **FR-004**: YAML Metadata Parser module MUST validate schema consistency across documents and log inconsistencies
 - **FR-005**: System MUST handle gracefully malformed YAML by logging errors and continuing to process other documents
 - **FR-006**: System MUST maintain complete source lineage for every chunk and generated answer (document ID, version, author, date, timestamp)
 - **FR-007**: System MUST track document version history and preserve queryability of historical versions
-- **FR-008**: System MUST detect contradictory claims across documents by comparing entities and rules in the same regulatory domains
-- **FR-009**: Conflict detection MUST generate conflict summaries including both conflicting sources and specific conflicting content
-- **FR-010**: System MUST identify outdated regulatory references by comparing dates against current regulatory effective dates
-- **FR-011**: System MUST flag documents missing required regulatory references for their source_type
+- **FR-008**: System MUST detect contradictory claims across documents by comparing entities and rules in the same regulatory domains using exact string matching as primary method, with semantic similarity fallback for claims that are structurally similar but not identical
+- **FR-009**: Conflict detection MUST generate conflict summaries including both conflicting sources and specific conflicting content; summaries presented for human review and reconciliation decisions (automated reconciliation is out of scope)
+- **FR-010**: System MUST identify outdated regulatory references by comparing dates against current regulatory effective dates defined in the regulatory domain configuration file
+- **FR-011**: System MUST flag documents missing required regulatory references for their source_type as defined in the regulatory domain configuration
 - **FR-012**: System MUST assign risk severity levels (LOW/MEDIUM/HIGH) to detected compliance issues
 - **FR-013**: System MUST store all provenance metadata in the vector index pipeline for retrieval-time attribution
 - **FR-014**: System MUST expose a Provenance Lookup API that returns complete source lineage for any retrieved answer
 - **FR-015**: System MUST expose a Version Comparison API that compares metadata and content across document versions
 - **FR-016**: System MUST expose a Conflict Report API that retrieves detected conflicts with filtering and sorting capabilities
 - **FR-017**: System MUST expose a Compliance Risk Report API that provides risk assessment and remediation recommendations
-- **FR-018**: System MUST generate audit-ready traceability logs for every retrieved response including query, sources, confidence, and timestamps
+- **FR-018**: System MUST generate audit-ready traceability logs for every retrieved response including query, sources, confidence, and timestamps; each log entry MUST include a SHA-256 hash of the previous entry to create an immutable chain for tamper detection
 - **FR-019**: System architecture MUST be modular to support future extensibility for PDF and DOCX ingestion
 - **FR-020**: System MUST include unit tests for metadata parsing, conflict detection, and risk scoring modules
 
@@ -132,7 +152,7 @@ Auditors and regulatory compliance teams need comprehensive, tamper-evident logs
 - **Conflict**: A detected contradiction between claims in different documents or versions, with source references, conflicting content, and severity level
 - **RegulatoryDomain**: A classification for compliance requirements (e.g., HIPAA, GDPR, SOX, FDA) with metadata about effective dates and required coverage
 - **ComplianceRisk**: An assessment of risk factors including outdated references, missing domains, conflicting instructions, and assigned severity
-- **AuditLog**: A tamper-resistant log entry recording query, retrieved sources, inference results, user context, and timestamps
+- **AuditLog**: A tamper-resistant log entry recording query, retrieved sources, inference results, user context, and timestamps; includes sequence number and SHA-256 hash of previous entry for integrity verification
 
 ## Success Criteria
 
@@ -147,7 +167,7 @@ Auditors and regulatory compliance teams need comprehensive, tamper-evident logs
 - **SC-007**: Provenance lookup API responds in under 500ms for 99% of requests
 - **SC-008**: System handles graceful failure on malformed YAML with 0% critical errors and 100% of other documents processed successfully
 - **SC-009**: At least 3 regulatory domains (e.g., HIPAA, GDPR, SOX) are supported in compliance risk analysis
-- **SC-010**: Audit logs retain integrity verification capability detectable through tamper-detection mechanisms
+- **SC-010**: Audit logs retain integrity verification capability detectable through tamper-detection mechanisms; verification algorithm can identify any modification to log entries
 
 ## Assumptions
 
@@ -155,9 +175,10 @@ Auditors and regulatory compliance teams need comprehensive, tamper-evident logs
 - YAML front-matter is consistently placed at the very beginning of each document before any other content
 - The `author`, `date`, and `version` fields are required; `source_type` and `regulatory_domain` may be optional in v1 with fallback to defaults
 - Existing RAG system infrastructure (vector store, retrieval pipeline) will be extended to support provenance metadata without requiring full data re-indexing
-- Regulatory domain taxonomy and current effective dates will be maintained in a configuration file or database accessible to the compliance risk module
+- Regulatory domain taxonomy is maintained via configuration file (YAML/JSON) with non-developer update capability; includes domain names, effective dates, and required coverage rules
 - Git repository structure with version-controlled corpus means document versions are tracked by filename (v1, v2, v3 suffixes)
-- Conflict detection prioritizes exact string matching with option for semantic similarity in future iterations
-- Audit logging infrastructure uses server-side append-only storage mechanism to prevent modification
+- Conflict detection implements exact string matching first, then semantic similarity (via NLP) for unmatched but related claims; no automated reconciliation
+- Audit logging infrastructure uses cryptographic hash chains (SHA-256) with append-only semantics; allows verification but not modification post-creation
+- Document ingestion uses hybrid batch + on-demand approach: scheduled scans run on configurable interval (e.g., daily), and REST API allows operators to trigger immediate ingestion
 - Initial scope excludes PDF and DOCX ingestion; architecture supports future extensibility
 - Unit test coverage targets 80%+ for parsing and conflict detection modules
