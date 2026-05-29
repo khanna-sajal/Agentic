@@ -1,0 +1,115 @@
+# Implementation Plan: Document Provenance Tracing & Conflict Detection
+
+**Branch**: `001-provenance-conflict-detection` | **Date**: May 29, 2026 | **Spec**: `specs/001-provenance-conflict-detection/spec.md`
+
+**Input**: Feature specification from `specs/001-provenance-conflict-detection/spec.md`
+
+## Summary
+
+Implement a Python-based THEMIS feature to evaluate document provenance, extract lineage, detect source conflicts, and label regulatory compliance risk. The feature will expose a `POST /evaluate` endpoint that accepts query input, RAG answer text, and source documents, then returns a TrustSignal containing a composite trust score, evidence lineage chains, and explicit flags like `DATE_CONFLICT`, `VERSION_MISMATCH`, and `COMPLIANCE_RISK`.
+
+Key technical decisions:
+- Use YAML metadata parsing for provenance extraction from source front matter.
+- Use a graph representation (NetworkX or a dict-based graph interface) for immutable version lineage and ancestry traversal.
+- Use Groq-like declarative query patterns for conflict extraction and compliance labelling.
+- Use a rule-based compliance checker to map regulatory risks to explicit rule IDs and evidence.
+
+## Technical Context
+
+**Language/Version**: Python 3.x (existing repository is Python based; likely 3.11+) 
+
+**Primary Dependencies**:
+- `PyYAML` for YAML front-matter parsing
+- `networkx` for lineage graph construction and traversal (fallback to an in-memory dict graph interface)
+- `FastAPI` for the `POST /evaluate` HTTP API endpoint
+- `pydantic` for input/output schema validation
+- `pytest` for automated unit/integration testing
+
+**Storage**: File-based source corpus + in-memory provenance graph for evaluation. No persistent database required for MVP.
+
+**Testing**: `pytest` unit tests for provenance extraction, graph lineage, conflict extraction, compliance rule evaluation, and API contract validation.
+
+**Target Platform**: Python server / local development environment.
+
+**Project Type**: Library/API service within the existing Python codebase.
+
+**Performance Goals**:
+- Request evaluation latency under 500ms for demo-sized corpus clusters
+- Deterministic lineages and conflict outputs
+- Bounded graph traversal for version lineage
+
+**Constraints**:
+- Must preserve explicit evidence chains for all trust outputs
+- No opaque scoring; every TrustSignal score must be tied to metadata and conflict evidence
+- Conflict extraction and compliance labeling must be rule-based and auditable
+
+**Scale/Scope**:
+- Support 3-version document clusters per query for the initial feature
+- Support multiple regulated domains in the same corpus (GDPR, data retention, IP law)
+
+## Constitution Check
+
+- Principle 1 (Evidence-First Provenance): satisfied by storing document metadata and lineage evidence in TrustSignal output.
+- Principle 2 (Immutable Version Lineage): satisfied by version graph model and by preserving source versions as immutable nodes.
+- Principle 3 (Explicit Conflict Detection): satisfied by explicit conflict objects with claim-level reasoning and source citations.
+- Principle 4 (Compliance Risk Rule Mapping): satisfied by rule-based compliance checker and explicit rule/evidence outputs.
+- Principle 5 (Quality, Testing, UX, and Performance): satisfied by modular API design, schema validation, and pytest-driven coverage.
+
+**GATE**: No constitution violations found. The design aligns with THEMIS governance and evidence requirements.
+
+## Project Structure
+
+### Documentation (this feature)
+
+```text
+specs/001-provenance-conflict-detection/
+├── plan.md
+├── research.md
+├── data-model.md
+├── quickstart.md
+├── contracts/
+│   ├── evaluate-api.md
+│   └── trustsignal-schema.md
+└── tasks.md            # Phase 2 output (/speckit.tasks)
+```
+
+### Source Code (repository root)
+
+```text
+src/
+├── themis/
+│   ├── __init__.py
+│   ├── conflict.py
+│   ├── provenance.py
+│   └── parser/
+│       ├── __init__.py
+│       └── ...
+
+tests/
+├── test_conflict.py
+└── test_provenance.py
+
+corpus/
+├── cluster01/
+├── cluster02/
+└── cluster03/
+```
+
+**Structure Decision**: Use the existing single Python package layout under `src/themis/` for implementation and `tests/` for coverage.
+
+## Design Notes
+
+- Provenance extraction will parse YAML front matter from corpus documents and create `SourceDocument` metadata objects.
+- Version lineage will be modeled as a directed acyclic graph (DAG) using NetworkX or a dict-backed graph abstraction.
+- Conflict extraction will use Groq-style pattern queries over parsed source claims and metadata.
+- Compliance risk evaluation will apply explicit rules to claim mismatches and regulatory domain context, generating flagged findings with rule IDs and evidence.
+- The public contract is `POST /evaluate` returning a structured TrustSignal JSON payload.
+
+## Agent Context Update
+
+The `.github/copilot-instructions.md` file is updated to reference this plan file as the current plan context.
+
+## Notes
+
+- `tasks.md` is not generated by this plan step; it will be created later by `/speckit.tasks`.
+- This plan is intentionally implementation-ready while still preserving requirement traceability from the feature spec.

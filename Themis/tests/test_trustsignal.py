@@ -1,17 +1,12 @@
-from themis import SourceDocument, build_lineage_graph, get_lineage
+from themis import SourceDocument
+from themis.compliance import evaluate_compliance
+from themis.conflict import extract_conflicts
+from themis.provenance import build_lineage_graph
+from themis.trustsignal import build_trust_signal
 
 
-def test_get_lineage(tmp_path):
-    p = tmp_path / 'doc.txt'
-    p.write_text('''---\nname: testdoc\ndate: 2023-01-01\nversion: v1\n---\nContent''')
-    meta = get_lineage(str(p))
-    assert meta['name'] == 'testdoc'
-    assert meta['date'] == '2023-01-01'
-    assert meta['version'] == 'v1'
-
-
-def test_build_lineage_graph():
-    documents = [
+def test_build_trust_signal_prioritizes_non_conflicting_source():
+    docs = [
         SourceDocument(
             id='cluster02_v1',
             cluster='cluster02',
@@ -43,7 +38,13 @@ def test_build_lineage_graph():
             content='---\nauthor: Legal Team\ndate: 2023-03-01\nversion: v3\nsource_type: policy\nregulatory_domain: GDPR\n---\nPolicy X approved 2023.',
         ),
     ]
-    graph = build_lineage_graph(documents)
-    assert graph.root_ids == ['cluster02_v1']
-    assert graph.ancestors('cluster02_v3') == ['cluster02_v1', 'cluster02_v2']
-    assert [node.id for node in graph.chains()[0]] == ['cluster02_v1', 'cluster02_v2', 'cluster02_v3']
+    lineage_graph = build_lineage_graph(docs)
+    conflicts = extract_conflicts(docs)
+    rules = evaluate_compliance(conflicts, docs)
+    signal = build_trust_signal(docs, conflicts, rules, lineage_graph)
+
+    scores = {entry['source_id']: entry['score'] for entry in signal['source_scores']}
+    assert scores['cluster02_v2'] >= scores['cluster02_v3']
+    assert scores['cluster02_v2'] >= scores['cluster02_v1']
+    assert 'DATE_CONFLICT' in signal['flags']
+    assert signal['lineage_chains'][0]['chain_id'].startswith('chain_')

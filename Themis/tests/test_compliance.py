@@ -1,19 +1,9 @@
-from themis import SourceDocument, detect_conflict, extract_conflicts
+from themis import SourceDocument
+from themis.compliance import evaluate_compliance
+from themis.conflict import extract_conflicts
 
 
-def test_detect_conflict(tmp_path):
-    a = tmp_path / 'a.txt'
-    b = tmp_path / 'b.txt'
-    a.write_text('''---\ndate: 2023-01-01\nversion: v1\nauthor: Team A\nsource_type: policy\nregulatory_domain: GDPR\n---\nA''')
-    b.write_text('''---\ndate: 2024-01-01\nversion: v2\nauthor: Team B\nsource_type: policy\nregulatory_domain: GDPR\n---\nB''')
-    res = detect_conflict(str(a), str(b), key='date')
-    assert res
-    assert res['conflict_key'] == 'date'
-    assert res['a_value'] == '2023-01-01'
-    assert res['b_value'] == '2024-01-01'
-
-
-def test_extract_conflicts_from_documents():
+def test_evaluate_compliance_risk():
     docs = [
         SourceDocument(
             id='cluster02_v1',
@@ -37,7 +27,7 @@ def test_extract_conflicts_from_documents():
         ),
     ]
     conflicts = extract_conflicts(docs)
-    assert len(conflicts) == 1
-    conflict = conflicts[0]
-    assert conflict.conflicting_claim == 'approval_year'
-    assert conflict.conflict_type == 'DATE_CONFLICT'
+    rule_matches = evaluate_compliance(conflicts, docs)
+    assert len(rule_matches) == 1
+    assert rule_matches[0].rule_id == 'RULE_DATE_CONFLICT'
+    assert 'GDPR' in rule_matches[0].trigger_conditions
