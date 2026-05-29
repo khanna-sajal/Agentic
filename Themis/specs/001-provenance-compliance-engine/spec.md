@@ -181,4 +181,4 @@ Auditors and regulatory compliance teams need comprehensive, tamper-evident logs
 - Audit logging infrastructure uses cryptographic hash chains (SHA-256) with append-only semantics; allows verification but not modification post-creation
 - Document ingestion uses hybrid batch + on-demand approach: scheduled scans run on configurable interval (e.g., daily), and REST API allows operators to trigger immediate ingestion
 - Initial scope excludes PDF and DOCX ingestion; architecture supports future extensibility
-- Unit test coverage targets 80%+ for parsing and conflict detection modules
+- Unit test coverage targets 80%+ for parsing and conflict detection modules.
